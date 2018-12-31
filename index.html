@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Eric Meyer's Reset for Cross Browser Consistency -->
+    <link rel="stylesheet" href="./assets/style/reset.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <!-- Main Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <!-- Google Fonts CDN for Roboto and Open Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    <!-- Main CSS Link -->
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <!-- JQuery Links -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <title>Rock Scissors Paper Online</title>
+</head>
+
+<body>
+    <!-- Main Container Begin -->
+    <div class="container-fluid w-100 h-100 m-0">
+        <!-- Begin 1st Row -->
+        <div class="row row-justify-content-start h-100 m-0">
+
+            <!-- container col -->
+            <div id="col" class="col col-contain">
+                <!-- Card Goes Here -->
+
+                <img class="card card-img-top m-0" src="./assets/images/wood-floor.jpg" alt="-Game Board-">
+                <!-- Main Board Text Overlay Starts Here -->
+                <div class="card-img-overlay">
+
+                    <!-- Main Game Row (Inside Overlay) -->
+                    <div class="row">
+
+                        <!-- First Col -->
+                        <div class="col">
+                            <!-- Player 1 -->
+                            <div class="p1Img" id="p1Img"></div>
+                            
+                            <div class="p1Choice" id="p1Choice"></div>
+                            <div class="p1Win" id="p1Win"></div>
+                            <div class="p1Loss" id="p1Loss"></div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="rock" id="rock1"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="scissors" id="scissors1"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="paper" id="paper1"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Second Col -->
+                        <div id="col2" class="col">
+                            <div class="gameDiv">
+                                <div id="results" class="results">Results</div>
+                                <div id="timer" class="timer">Timer</div>
+                            </div>
+
+                        </div>
+
+                        <!--Player 2 -->
+
+                        <div class="col">
+                            <div class="p2Img" id="p2Img"></div>
+                     
+                            <div class="p2Choice" id="p2Choice"></div>
+                            <div class="p2Win" id="p2Win"></div>
+                            <div class="p2Loss" id="p2Loss"></div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="rock" id="rock2"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="scissors" id="scissors2"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="paper" id="paper2"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- Overlay End Below-->
+
+                </div>
+
+                <!-- container col end below -->
+
+            </div>
+
+
+            <!-- 1st Row Main 100w 100h Below -->
+
+        </div>
+
+
+        <!-- Main Container Below -->
+
+    </div>
+
+
+
+    <!-- All the good stuff! -->
+    <script type="text/javascript" src="./assets/javascript/rpsm.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+
+    <!-- Required JQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <!-- Required popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <!-- Required Bootstrap JQuery CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
