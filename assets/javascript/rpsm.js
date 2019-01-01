@@ -10,15 +10,19 @@ $(document).ready(function () {
     var rpsSize = 100;
     var database;
     var ctext;
-
+    var time;
+    var sec = 6;
+    var timeAllow = sec;
+   var p1Choice = "not set";
 
 
     //Main Procedure
     //===============================================
     dbauth();
+    setSnapshot();
     loadPlayers();
     timer();
-    choice(i);
+    
 
 
     //Debug
@@ -34,7 +38,7 @@ $(document).ready(function () {
 
     function setChoice() {
 
-        database.ref().set({
+        database.ref("guess").push({
 
             p1guess: ctext
         });
@@ -43,20 +47,20 @@ $(document).ready(function () {
     function choice(players, i) {
 
 
-        document.onkeyup = function (event) {
+        // document.onkeyup = function (event) {
 
-            var p1guess = event.key;
+            var p1guess = "Choose";
 
 
-            if (p1guess == "r") {
+            if (p1guess == "Rock") {
                 ctext = "Rock";
                 $("#p1Choice").html(ctext);
             }
-            else if (p1guess == "s") {
+            else if (p1guess == "Scissors") {
                 ctext = "Scissors";
                 $("#p1Choice").html(ctext);
             }
-            else if (p1guess == "p") {
+            else if (p1guess == "Paper") {
                 ctext = "Paper";
                 $("#p1Choice").html(ctext);
 
@@ -68,7 +72,7 @@ $(document).ready(function () {
             }
             setChoice(players, p1guess, i, ctext)
 
-        }
+        // }
     }
 
 
@@ -132,10 +136,7 @@ $(document).ready(function () {
 
                 setChoice(players, p1guess, i, ctext)
 
-
             })
-
-
 
             $("#rock" + (players[i].pnum)).append(rockImg);
 
@@ -213,24 +214,31 @@ $(document).ready(function () {
         database = firebase.database();
 
     }
-    //timer function
-    var time;
-    var sec = 6;
-    var timeAllow = sec;
-    $("#timer").text("Time Remaining:" + timeAllow);
+
+    
 
     function timer() {
-        $("#timer").text("Time Remaining:" + timeAllow);
-        time = setInterval(timeLimit, 1000);
+        database.ref().set({
 
+            counter: timeAllow
+        });
+        time = setInterval(timeLimit, 1000);
 
     };
 
     function timeLimit() {
         var timeDec = --timeAllow;
-        $("#timer").text("Time Remaining:" + timeDec);
+        choice(i);
+        database.ref().set({
+
+            counter: timeDec
+        });
+        
         if (timeAllow == 0) {
-            $("#timer").append("Time Limit Expired!");
+            database.ref().set({
+
+                counter: "Time Limit Expired!"
+            });
             reset();
         }
     }
@@ -241,25 +249,34 @@ $(document).ready(function () {
 
     };
 
+    function setSnapshot(){
+        database.ref().on("value", function(snapshot) {
+            
+            // Change the HTML to reflect
+            $("#timer").text("Time Remaining:" + snapshot.val().counter);
+            $("#p1choice").text("Time Remaining:" + snapshot.val().p1Choice);
+
+          });
+    }
     function evalWin() {
         if ((p1Guess === "Rock") || (p1Guess === "Paper") || (p1Guess === "Scissors")) {
 
-            if ((p1Guess === "r") && (p2guess === "s")) {
+            if ((p1Guess === "Rock") && (p2guess === "Scissors")) {
                 $("#results").html("P1ayer1 wins");
 
-            } else if ((p1Guess === "r") && (p2guess === "p")) {
+            } else if ((p1Guess === "Rock") && (p2guess === "Paper")) {
                 $("#results").html("P1ayer2 wins");
 
-            } else if ((p1Guess === "s") && (p2guess === "r")) {
+            } else if ((p1Guess === "Scissors") && (p2guess === "Rock")) {
 
                 $("#results").html("P1ayer2 wins");
-            } else if ((p1Guess === "s") && (p2guess === "p")) {
+            } else if ((p1Guess === "Scissors") && (p2guess === "Paper")) {
 
                 $("#results").html("P1ayer1 wins");
-            } else if ((p1Guess === "p") && (p2guess === "r")) {
+            } else if ((p1Guess === "Paper") && (p2guess === "Rock")) {
 
                 $("#results").html("P1ayer1 wins");
-            } else if ((p1Guess === "p") && (p2guess === "s")) {
+            } else if ((p1Guess === "Paper") && (p2guess === "Scissors")) {
 
                 $("#results").html("P1ayer2 wins");
             } else if (p1Guess === p2guess) {
